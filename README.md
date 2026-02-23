@@ -1,4 +1,6 @@
 ## Запуск проекта
+Создать .env по примеру
+
 Добавить в hosts 127.0.0.1 remnawave.local
 ```bash
 docker compose -f remnawave/compose.yaml up -d && \
