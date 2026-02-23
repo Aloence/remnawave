@@ -1,0 +1,19 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.4
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix, --show-fixes]
+      - id: ruff-format
+  - repo: https://github.com/facebook/pyrefly-pre-commit
+    rev: 0.51.2
+    hooks:
+      - id: pyrefly-check
+        name: Pyrefly (type checking)
+        pass_filenames: false
+        additional_dependencies:
+          - "alembic>=1.18.4"
+          - "asyncpg>=0.31.0"
+          - "fastapi[standard]>=0.129.0"
+          - "httpx>=0.28.1"
+          - "pydantic-settings>=2.13.1"

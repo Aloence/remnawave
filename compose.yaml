@@ -1,0 +1,33 @@
+services:
+  app:
+    build:
+      context: .
+    command: uvicorn main:app --host 0.0.0.0 --reload
+    ports:
+      - "8000:8000"
+    env_file: .env
+    volumes:
+      - ./src:/home/remnawave-api/src
+    depends_on:
+      - app-db
+    networks:
+      - remnawave-network
+
+  app-db:
+    image: postgres:17.6
+    env_file:
+      - .env
+    ports:
+      - "55432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - remnawave-network
+
+volumes:
+  postgres_data:
+
+networks:
+  remnawave-network:
+    external: true
+    name: remnawave-network
