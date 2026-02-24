@@ -85,9 +85,6 @@ class ApiRequest:
         if headers is None:
             headers = {}
 
-        if log_request:
-            assert client_id, "Can't log operation without client_id"
-
         res = await self.bare_request(
             method=method,
             url=f"{self.base_url}{url}" if self.base_url else url,
